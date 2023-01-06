@@ -1,4 +1,7 @@
 public class Queen extends ChessPiece{
+
+    int[][] vectors = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, {0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+
     public Queen(String color) {
         super(color);
     }
@@ -10,10 +13,8 @@ public class Queen extends ChessPiece{
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        return ((((Math.abs(line - toLine ) == (Math.abs(column - toColumn))
-                || (line == toLine ) || (column == toColumn))
-                && !((line == toLine) && (column == toColumn)))
-                && checkPos(toLine) && checkPos(toColumn) && checkPos(line) && checkPos(column) ));
+        fillPossibleMoves(vectors, chessBoard, line, column);
+        return testCB[toLine][toColumn];
     }
 
     boolean checkPos(int i){

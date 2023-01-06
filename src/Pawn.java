@@ -15,11 +15,18 @@ public class Pawn extends ChessPiece{
         int prohibitedLine = getColor() == "White" ? 0 : 7;
         if (!checkPos(line) || !checkPos(toLine) || !checkPos(column) || !checkPos(toColumn)) return false;
         if (line == prohibitedLine || toLine == prohibitedLine) return false;
-        if (line == initialLine && column == toColumn && (toLine - line) * direction == 2) return true;
-        for (int j = 0; j <= 0; j++) {
-            if (line + direction == toLine && column + j == toColumn) return true;
+        if (line == initialLine && column == toColumn && (toLine - line) * direction == 2 &&
+            chessBoard.board[line + direction][column] == null &&
+            chessBoard.board[toLine][column] == null)
+            return true;
+        if (line + direction == toLine && column  == toColumn
+            && chessBoard.board[toLine][column] == null) return true;
+        for (int j = -1; j <= 1; j +=2) {
+            if (line + direction == toLine && (column + j)  == toColumn
+                && chessBoard.board[toLine][column + j] != null
+                && chessBoard.board[toLine][column + j].getColor() != color) return true;
         }
-        return false;
+            return false;
     }
 
     boolean checkPos(int i){

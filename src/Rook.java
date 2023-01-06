@@ -1,4 +1,7 @@
 public class Rook extends ChessPiece{
+
+    int[][] vectors = {{0, 1},{0, -1},{-1, 0}, {1, 0}};
+
     public Rook(String color) {
         super(color);
     }
@@ -10,9 +13,11 @@ public class Rook extends ChessPiece{
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        return (((line == toLine ) || (column == toColumn))
-                && !((line == toLine ) && (column == toColumn))
-                && checkPos(toLine) && checkPos(toColumn) && checkPos(line) && checkPos(column) );
+//        return (((line == toLine ) || (column == toColumn))
+//                && !((line == toLine ) && (column == toColumn))
+//                && checkPos(toLine) && checkPos(toColumn) && checkPos(line) && checkPos(column) );
+        fillPossibleMoves(vectors, chessBoard, line, column);
+        return testCB[toLine][toColumn];
     }
 
     boolean checkPos(int i){
