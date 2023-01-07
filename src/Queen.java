@@ -14,7 +14,7 @@ public class Queen extends ChessPiece{
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         fillPossibleMoves(vectors, chessBoard, line, column);
-        return testCB[toLine][toColumn];
+        return possibleMoves[toLine][toColumn];
     }
 
     boolean checkPos(int i){

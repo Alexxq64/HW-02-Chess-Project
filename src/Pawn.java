@@ -26,7 +26,7 @@ public class Pawn extends ChessPiece{
                 && chessBoard.board[toLine][column + j] != null
                 && chessBoard.board[toLine][column + j].getColor() != color) return true;
         }
-            return false;
+        return false;
     }
 
     boolean checkPos(int i){

@@ -1,4 +1,8 @@
 public class ChessBoard {
+
+    private static final String BLACK = "\u001B[30m";
+    private static final String GRAY = "\u001B[37m";
+
     ChessPiece[][] board = new ChessPiece[8][8];
     String nowPlayer;
 
@@ -24,6 +28,8 @@ public class ChessBoard {
                 if (board[endLine][endColumn].getSymbol() == "R") board[endLine][endColumn].check = false;
                 if (board[endLine][endColumn].getSymbol() == "K") board[endLine][endColumn].check = false;
                 board[startLine][startColumn] = null; // set null to previous cell
+// find the King
+// test if it is under attack, declare the check
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
 
                 return true;
@@ -43,9 +49,13 @@ public class ChessBoard {
             System.out.print(i + "\t");
             for (int j = 0; j < 8; j++) {
                 if (board[i][j] == null) {
+                    if ((i + j) % 2 == 1) System.out.print(GRAY);
                     System.out.print(".." + "\t");
+                    System.out.print(BLACK);
                 } else {
+                    if (board[i][j].getColor() == "White") System.out.print(GRAY);
                     System.out.print(board[i][j].getSymbol() + board[i][j].getColor().substring(0, 1).toLowerCase() + "\t");
+                    System.out.print(BLACK);
                 }
             }
             System.out.println();
