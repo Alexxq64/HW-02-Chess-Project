@@ -27,9 +27,34 @@ public class ChessBoard {
                 board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
                 if (board[endLine][endColumn].getSymbol() == "R") board[endLine][endColumn].check = false;
                 if (board[endLine][endColumn].getSymbol() == "K") board[endLine][endColumn].check = false;
+                if (board[endLine][endColumn].getSymbol() == "P"
+                    && ((endLine == 7 &&  this.nowPlayerColor() == "White") || (endLine == 0 &&  this.nowPlayerColor() == "Black"))) {
+                    board[endLine][endColumn] = new Queen(this.nowPlayerColor());
+                }
                 board[startLine][startColumn] = null; // set null to previous cell
 // find the King
+                int lineKing = 0;
+                int colunmKing = 0;
+                boolean kingUnderAttack = false;
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (board[i][j] != null && board[i][j].getSymbol() == "K" && board[i][j].getColor() != this.nowPlayerColor()) {
+                            lineKing = i;
+                            colunmKing = j;
+                        }
+                    }
+                }
 // test if it is under attack, declare the check
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (board[i][j] != null && board[lineKing][colunmKing].getColor() != this.nowPlayerColor()
+                            && board[i][j].canMoveToPosition(this, i, j, lineKing, colunmKing))
+                            kingUnderAttack = true;
+                    }
+                }
+
+                if (kingUnderAttack) System.out.println("Шах!");
+//                if (board[lineKing][colunmKing].isUnderAttack(this, lineKing,colunmKing)) System.out.println("Шах!");
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
 
                 return true;

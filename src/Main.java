@@ -2,6 +2,20 @@ import java.util.Scanner;
 
 public class Main {
 
+//1. e2—e4 e7—e5
+//move 1 4 3 4
+//move 6 4 4 4
+//2. Bf1—c4 Nb8—c6
+//move 0 5 3 2
+//move 7 1 5 2
+//3. Qd1—h5?! Ng8—f6??
+//move 0 3 4 7
+//move 7 6 5 5
+//4. Qh5xf7#
+//move 4 7 6 5
+
+
+
     public static ChessBoard buildBoard() {
         ChessBoard board = new ChessBoard("White");
 
@@ -10,8 +24,8 @@ public class Main {
         board.board[0][1] = new Horse("White");
         board.board[0][2] = new Bishop("White");
         board.board[0][3] = new Queen("White");
-        board.board[4][5] = new King("White");
-        board.board[2][5] = new Bishop("White");
+        board.board[0][4] = new King("White");
+        board.board[0][5] = new Bishop("White");
         board.board[0][6] = new Horse("White");
         board.board[0][7] = new Rook("White");
         board.board[1][0] = new Pawn("White");
@@ -36,7 +50,7 @@ public class Main {
         board.board[6][2] = new Pawn("Black");
         board.board[6][3] = new Pawn("Black");
         board.board[6][4] = new Pawn("Black");
-        board.board[5][5] = new Pawn("Black");
+        board.board[6][5] = new Pawn("Black");
         board.board[6][6] = new Pawn("Black");
         board.board[6][7] = new Pawn("Black");
         return board;

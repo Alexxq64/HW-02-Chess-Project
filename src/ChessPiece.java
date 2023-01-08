@@ -22,6 +22,7 @@ public abstract class ChessPiece {
             ChessBoard chessBoard, int line, int column, int toLine, int toColumn);
     public abstract String getSymbol();
 
+
     void fillPossibleMoves(int[][] vectors, ChessBoard cb, int line, int column) {
 // passing by each possible direction until the end of the board or to next chess piece
 // and fulfilling the possibleMoves
@@ -44,17 +45,17 @@ public abstract class ChessPiece {
             }
         }
 // Show for testing
-        System.out.print(cb.board[line][column].getSymbol());
-        System.out.println(" 0 1 2 3 4 5 6 7");
-        for (int i = 7; i >= 0; i--) {
-            System.out.print(i);
-            for (int j = 0; j < 8; j++) {
-                if (i == line && j == column) System.out.print(" X");
-                else if (possibleMoves[i][j]) System.out.print(" O");
-                else System.out.print(" -");
-            }
-            System.out.println();
-        }
+//        System.out.print(cb.board[line][column].getSymbol());
+//        System.out.println(" 0 1 2 3 4 5 6 7");
+//        for (int i = 7; i >= 0; i--) {
+//            System.out.print(i);
+//            for (int j = 0; j < 8; j++) {
+//                if (i == line && j == column) System.out.print(" X");
+//                else if (possibleMoves[i][j]) System.out.print(" O");
+//                else System.out.print(" -");
+//            }
+//            System.out.println();
+//        }
     }
 
     boolean checkPos(int i){
