@@ -15,12 +15,14 @@ public class Pawn extends ChessPiece{
         int prohibitedLine = getColor() == "White" ? 0 : 7;
         if (!checkPos(line) || !checkPos(toLine) || !checkPos(column) || !checkPos(toColumn)) return false;
         if (line == prohibitedLine || toLine == prohibitedLine) return false;
+// moving forward
         if (line == initialLine && column == toColumn && (toLine - line) * direction == 2 &&
             chessBoard.board[line + direction][column] == null &&
             chessBoard.board[toLine][column] == null)
             return true;
         if (line + direction == toLine && column  == toColumn
             && chessBoard.board[toLine][column] == null) return true;
+// taking a chess-piece of the opponent
         for (int j = -1; j <= 1; j +=2) {
             if (line + direction == toLine && (column + j)  == toColumn
                 && chessBoard.board[toLine][column + j] != null

@@ -27,6 +27,7 @@ public class ChessBoard {
                 board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
                 if (board[endLine][endColumn].getSymbol() == "R") board[endLine][endColumn].check = false;
                 if (board[endLine][endColumn].getSymbol() == "K") board[endLine][endColumn].check = false;
+// changed passed pawn to queen
                 if (board[endLine][endColumn].getSymbol() == "P"
                     && ((endLine == 7 &&  this.nowPlayerColor() == "White") || (endLine == 0 &&  this.nowPlayerColor() == "Black"))) {
                     board[endLine][endColumn] = new Queen(this.nowPlayerColor());
@@ -44,7 +45,7 @@ public class ChessBoard {
                         }
                     }
                 }
-// test if it is under attack, declare the check
+// if the King is under attack declares the check
                 for (int i = 0; i < 8; i++) {
                     for (int j = 0; j < 8; j++) {
                         if (board[i][j] != null && board[lineKing][colunmKing].getColor() != this.nowPlayerColor()
@@ -52,9 +53,8 @@ public class ChessBoard {
                             kingUnderAttack = true;
                     }
                 }
-
                 if (kingUnderAttack) System.out.println("Шах!");
-//                if (board[lineKing][colunmKing].isUnderAttack(this, lineKing,colunmKing)) System.out.println("Шах!");
+
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
 
                 return true;

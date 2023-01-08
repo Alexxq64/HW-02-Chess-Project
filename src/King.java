@@ -14,7 +14,7 @@ public class King extends ChessPiece{
         ChessPiece cp = chessBoard.board[toLine][toColumn];
 // if "to Position" on the next chessboard cell
         if ((Math.abs(line - toLine) <= 1 && Math.abs(column - toColumn) <= 1)
-// if "to Position" is not the same checkerboard cell
+// if "to Position" is not the same chessboard cell
                 && !((line == toLine) && (column == toColumn))
 // if "to Position" is within the chessboard
                 && checkPos(toLine) && checkPos(toColumn)

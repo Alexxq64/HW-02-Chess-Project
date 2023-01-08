@@ -2,24 +2,9 @@ import java.util.Scanner;
 
 public class Main {
 
-//1. e2—e4 e7—e5
-//move 1 4 3 4
-//move 6 4 4 4
-//2. Bf1—c4 Nb8—c6
-//move 0 5 3 2
-//move 7 1 5 2
-//3. Qd1—h5?! Ng8—f6??
-//move 0 3 4 7
-//move 7 6 5 5
-//4. Qh5xf7#
-//move 4 7 6 5
-
-
-
     public static ChessBoard buildBoard() {
         ChessBoard board = new ChessBoard("White");
 
-// roll back to the initial position after testing
         board.board[0][0] = new Rook("White");
         board.board[0][1] = new Horse("White");
         board.board[0][2] = new Bishop("White");
@@ -91,8 +76,7 @@ public class Main {
                     } else {
                         System.out.println("Рокировка не удалась");
                     }
-// roll back to "move" after testing
-                } else if (s.contains("m")) {
+                } else if (s.contains("move")) {
                     String[] a = s.split(" ");
                     try {
                         int line = Integer.parseInt(a[1]);

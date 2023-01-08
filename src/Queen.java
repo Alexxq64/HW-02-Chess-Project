@@ -1,5 +1,6 @@
 public class Queen extends ChessPiece{
 
+// moving direction of this chess piece
     int[][] vectors = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, {0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
     public Queen(String color) {
